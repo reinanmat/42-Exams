@@ -49,7 +49,7 @@ void	free_and_close_all() {
 		server.fd = -1;
 	}
 
-	if (!send_msg) {
+	if (send_msg) {
 		free(send_msg);
 		send_msg = NULL;
 	}
@@ -60,7 +60,7 @@ void	free_and_close_all() {
 			close(clients[i].fd);
 			clients[i].fd = -1;
 		}
-		if (!clients[i].msg) {
+		if (clients[i].msg) {
 			free(clients[i].msg);
 			clients[i].msg = NULL;
 		}
